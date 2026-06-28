@@ -58,13 +58,4 @@ def draw_step(current, idx, sym=None):
         lx,ly=_mid(pos[u],pos[v],0.10 if i%2==0 else -0.10); plt.text(lx,ly,d['label'],fontsize=11,ha='center',va='center')
     plt.axis('off'); plt.title(f"Paso {idx}: {current}" + (f" | '{sym}'" if sym else "")); plt.pause(1.0)
 
-# === main ===
-if __name__=='__main__':
-    s = sys.argv[1] if len(sys.argv)>1 else input("Cadena (a/b): ").strip()
-    try:
-        steps, ok = run(s); print("ACEPTA" if ok else "RECHAZA", f"(estado final: {steps[-1]})")
-        plt.ion(); draw_step(steps[0],0)           # estado inicial
-        for i,ch in enumerate(s,1): draw_step(steps[i],i,ch)  # cada caracter
-        plt.ioff(); plt.show()
-    except Exception as e:
-        print("RECHAZA:", e)
+
